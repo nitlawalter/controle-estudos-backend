@@ -108,7 +108,29 @@ public class EstatisticaController {
 		return ResponseEntity.ok(response);				
 	}
 	
+	@GetMapping(value = "/assunto/disciplina/{id}")
+	public ResponseEntity<Response<List<Estatistica>>> findByAssuntoDisciplinaId(@PathVariable("id") Long id){
+		Response<List<Estatistica>> response = new Response<List<Estatistica>>();
+		List<Estatistica> lista = service.findByAssuntoDisciplinaId(id);
+		if(lista == null) {
+			response.getErros().add("Lista de Estatistica não encontrada pelo id do assunto: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
 	
+	@GetMapping(value = "/assunto/{id}")
+	public ResponseEntity<Response<List<Estatistica>>> findByAssuntoId(@PathVariable("id") Long id){
+		Response<List<Estatistica>> response = new Response<List<Estatistica>>();
+		List<Estatistica> lista = service.findByAssuntoId(id);
+		if(lista == null) {
+			response.getErros().add("Lista de Estatistica não encontrada pelo id do assunto: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
 
 
 	private void validar(Estatistica estatistica, BindingResult result) {

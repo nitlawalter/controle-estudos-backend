@@ -109,7 +109,17 @@ public class TopicoController {
 		return ResponseEntity.ok(response);				
 	}
 	
-	
+	@GetMapping(value = "/assunto/{id}")
+	public ResponseEntity<Response<List<Topico>>> findByAssuntoId(@PathVariable("id") Long id){
+		Response<List<Topico>> response = new Response<List<Topico>>();
+		List<Topico> lista = service.findByAssuntoId(id);
+		if(lista == null) {
+			response.getErros().add("Lista de Tópicos não encontrada pelo id do assunto: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
 
 
 	private void validar(Topico topico, BindingResult result) {

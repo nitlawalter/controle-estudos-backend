@@ -81,6 +81,18 @@ public class AssuntoController {
 		return ResponseEntity.ok(response);
 	}
 	
+	@GetMapping(value = "/disciplina/{id}")
+	public ResponseEntity<Response<List<Assunto>>> findByDisciplinaId(@PathVariable("id") Long id){
+		Response<List<Assunto>> response = new Response<List<Assunto>>();
+		List<Assunto> lista = service.findByDisciplinaId(id);
+		if(lista == null) {
+			response.getErros().add("Lista de Assuntos não encontrada pelo id de disciplina: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
+	
 	@DeleteMapping(value = "{id}")
 	public ResponseEntity<Response<String>> deletar(@PathVariable("id") Long id){
 		Response<String> response = new Response<String>();

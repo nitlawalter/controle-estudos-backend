@@ -27,6 +27,14 @@ public class QuestaoService {
 		return repo.findAll();
 	}
 	
+	public List<Questao> findByTopicoAssuntoId(Long id) {		
+		return repo.findByTopicoAssuntoId(id);
+	}
+	
+	public List<Questao> findByTopicoAssuntoDisciplinaId(Long id) {		
+		return repo.findByTopicoAssuntoDisciplinaId(id);
+	}
+	
 	public Page<Questao> findPage(Integer pagina, Integer linhaPorPagina, String orderBy, String ascOrDesc) {
 		PageRequest pageRequest = PageRequest.of(pagina, linhaPorPagina, Direction.valueOf(ascOrDesc), orderBy);
 		return repo.findAll(pageRequest);

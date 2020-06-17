@@ -1,7 +1,6 @@
 package com.walter.api.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,11 +21,11 @@ public class Estatistica implements Serializable {
 	private Integer acertos;
 	private Integer erros;
 	private Integer total;
-	private BigDecimal percentual;
+	private String percentual;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_topico")
-	private Topico topico;
+	@JoinColumn(name = "id_assunto")
+	private Assunto assunto;
 
 	public Estatistica() {
 		
@@ -64,20 +63,20 @@ public class Estatistica implements Serializable {
 		this.total = total;
 	}
 
-	public BigDecimal getPercentual() {
+	public String getPercentual() {
 		return percentual;
 	}
 
-	public void setPercentual(BigDecimal percentual) {
+	public void setPercentual(String percentual) {
 		this.percentual = percentual;
 	}
 
-	public Topico getTopico() {
-		return topico;
+	public Assunto getAssunto() {
+		return assunto;
 	}
 
-	public void setTopico(Topico topico) {
-		this.topico = topico;
+	public void setAssunto(Assunto assunto) {
+		this.assunto = assunto;
 	}
 
 	@Override

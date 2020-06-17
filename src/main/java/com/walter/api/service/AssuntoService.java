@@ -23,6 +23,11 @@ public class AssuntoService {
 		return entity.get();
 	}
 	
+	public List<Assunto> findByDisciplinaId(Long id) {
+		List<Assunto> lista = repo.findByDisciplinaIdOrderByNomeAsc(id);
+		return lista;
+	}
+	
 	public List<Assunto> findAll() {
 		return repo.findAll();
 	}

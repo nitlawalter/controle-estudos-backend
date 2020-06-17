@@ -22,6 +22,7 @@ public class Questao implements Serializable {
 	private String comentario;
 	private String resumo;
 	private String gabarito;
+	private boolean revisao;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_topico")
@@ -102,6 +103,14 @@ public class Questao implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public boolean isRevisao() {
+		return revisao;
+	}
+
+	public void setRevisao(boolean revisao) {
+		this.revisao = revisao;
 	}
 	
 	

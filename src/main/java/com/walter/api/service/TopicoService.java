@@ -24,7 +24,12 @@ public class TopicoService {
 	}
 	
 	public List<Topico> findAll() {
-		return repo.findAll();
+		return repo.findAllByOrderByAssuntoDisciplinaNomeAsc();
+	}
+	
+	public List<Topico> findByAssuntoId(Long id) {
+		List<Topico> lista = repo.findByAssuntoIdOrderByNomeAsc(id);
+		return lista;
 	}
 	
 	public Page<Topico> findPage(Integer pagina, Integer linhaPorPagina, String orderBy, String ascOrDesc) {

@@ -109,7 +109,29 @@ public class QuestaoController {
 		return ResponseEntity.ok(response);				
 	}
 	
+	@GetMapping(value = "/topico/assunto/{id}")
+	public ResponseEntity<Response<List<Questao>>> findByAssuntoId(@PathVariable("id") Long id){
+		Response<List<Questao>> response = new Response<List<Questao>>();
+		List<Questao> lista = service.findByTopicoAssuntoId(id);
+		if(lista == null) {
+			response.getErros().add("Lista de Questões não encontrada pelo id do assunto: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
 	
+	@GetMapping(value = "/topico/assunto/disciplina/{id}")
+	public ResponseEntity<Response<List<Questao>>> findByAssuntoDisciplinaId(@PathVariable("id") Long id){
+		Response<List<Questao>> response = new Response<List<Questao>>();
+		List<Questao> lista = service.findByTopicoAssuntoDisciplinaId(id);
+		if(lista == null) {
+			response.getErros().add("Lista de Questões não encontrada pelo id do assunto: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
 
 
 	private void validar(Questao questao, BindingResult result) {

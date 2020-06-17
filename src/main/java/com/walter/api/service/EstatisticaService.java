@@ -27,6 +27,14 @@ public class EstatisticaService {
 		return repo.findAll();
 	}
 	
+	public List<Estatistica> findByAssuntoId(Long id) {
+		return repo.findByAssuntoId(id);
+	}
+	
+	public List<Estatistica> findByAssuntoDisciplinaId(Long id) {
+		return repo.findByAssuntoDisciplinaId(id);
+	}
+	
 	public Page<Estatistica> findPage(Integer pagina, Integer linhaPorPagina, String orderBy, String ascOrDesc) {
 		PageRequest pageRequest = PageRequest.of(pagina, linhaPorPagina, Direction.valueOf(ascOrDesc), orderBy);
 		return repo.findAll(pageRequest);
