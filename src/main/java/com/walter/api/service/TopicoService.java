@@ -28,7 +28,12 @@ public class TopicoService {
 	}
 	
 	public List<Topico> findByAssuntoId(Long id) {
-		List<Topico> lista = repo.findByAssuntoIdOrderByNomeAsc(id);
+		List<Topico> lista = repo.findByAssuntoIdOrderByAssuntoNomeAsc(id);
+		return lista;
+	}
+	
+	public List<Topico> findByAssuntoDisciplinaId(Long id) {
+		List<Topico> lista = repo.findByAssuntoDisciplinaIdOrderByAssuntoNomeAsc(id);
 		return lista;
 	}
 	

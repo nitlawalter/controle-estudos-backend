@@ -12,6 +12,8 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
 	
 	List<Topico> findAllByOrderByAssuntoDisciplinaNomeAsc();
 	
-	List<Topico> findByAssuntoIdOrderByNomeAsc(Long id);
+	List<Topico> findByAssuntoIdOrderByAssuntoNomeAsc(Long id);
+	
+	List<Topico> findByAssuntoDisciplinaIdOrderByAssuntoNomeAsc(Long id);
 
 }
