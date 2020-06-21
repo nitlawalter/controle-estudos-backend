@@ -1,11 +1,11 @@
 package com.walter.api.enums;
 
-public enum Perfil {
+public enum PerfilEnum {
 	
-	ADMIN(1, "ROLE_ADMIN"),
-	USUARIO(2, "ROLE_USUARIO");	
+	ROLE_ADMIN,
+	ROLE_USUARIO;	
 	
-	private int cod;
+	/*private int cod;
 	private String nome;
 	
 	private Perfil(int cod, String nome) {
@@ -34,6 +34,6 @@ public enum Perfil {
 		}
 		
 		throw new IllegalArgumentException("Id inválido " + id);
-	}
+	}*/
 
 }
