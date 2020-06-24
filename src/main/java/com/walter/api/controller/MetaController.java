@@ -117,7 +117,13 @@ public class MetaController {
 		return ResponseEntity.ok(response);				
 	}
 	
-	
+	@GetMapping(value =  "/diaAndUsuario/{dia}/{id}")
+	public ResponseEntity<Response<List<Meta>>> findBydiaAndUsuarioId(@PathVariable("dia") String dia, @PathVariable("id") Long id){
+		Response<List<Meta>> response = new Response<List<Meta>>();
+		List<Meta> lista = service.findBydiaAndUsuarioId(dia, id);
+		response.setData(lista);
+		return ResponseEntity.ok(response);				
+	}
 
 
 	private void validar(Meta disciplina, BindingResult result) {

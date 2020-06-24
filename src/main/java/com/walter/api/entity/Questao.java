@@ -27,6 +27,11 @@ public class Questao implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_topico")
 	private Topico topico;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+	
 
 	public Questao() {
 		
@@ -78,6 +83,14 @@ public class Questao implements Serializable {
 
 	public void setTopico(Topico topico) {
 		this.topico = topico;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

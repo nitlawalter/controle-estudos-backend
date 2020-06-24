@@ -3,9 +3,12 @@ package com.walter.api.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Meta implements Serializable {
@@ -19,6 +22,10 @@ public class Meta implements Serializable {
 	private String estudo;
 	private String dia;
 	private boolean finalizada;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 
 	public Meta() {
 		
@@ -62,6 +69,15 @@ public class Meta implements Serializable {
 
 	public void setFinalizada(boolean finalizada) {
 		this.finalizada = finalizada;
+	}
+	
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

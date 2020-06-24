@@ -32,6 +32,10 @@ public class MetaService {
 		return repo.findByDia(dia);
 	}
 	
+	public List<Meta> findBydiaAndUsuarioId(String dia, Long id) {
+		return repo.findByDiaAndUsuarioId(dia, id);
+	}
+	
 	public Page<Meta> findPage(Integer pagina, Integer linhaPorPagina, String orderBy, String ascOrDesc) {
 		PageRequest pageRequest = PageRequest.of(pagina, linhaPorPagina, Direction.valueOf(ascOrDesc), orderBy);
 		return repo.findAll(pageRequest);

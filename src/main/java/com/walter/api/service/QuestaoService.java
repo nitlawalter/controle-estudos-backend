@@ -31,8 +31,16 @@ public class QuestaoService {
 		return repo.findByTopicoAssuntoId(id);
 	}
 	
+	public List<Questao> findByTopicoAssuntoIdAndUsuarioId(Long idAssunto, Long idUsuario) {		
+		return repo.findByTopicoAssuntoIdAndUsuarioId(idAssunto, idUsuario);
+	}
+	
 	public List<Questao> findByTopicoAssuntoDisciplinaId(Long id) {		
 		return repo.findByTopicoAssuntoDisciplinaId(id);
+	}
+	
+	public List<Questao> findByTopicoAssuntoDisciplinaIdAndUsuarioId(Long idDisciplina, Long idUsuario) {		
+		return repo.findByTopicoAssuntoDisciplinaIdAndUsuarioId(idDisciplina, idUsuario);
 	}
 	
 	public Page<Questao> findPage(Integer pagina, Integer linhaPorPagina, String orderBy, String ascOrDesc) {

@@ -11,4 +11,6 @@ import com.walter.api.entity.Meta;
 public interface MetaRepository extends JpaRepository<Meta, Long> {
 	
 	List<Meta> findByDia(String dia);
+	
+	List<Meta> findByDiaAndUsuarioId(String dia, Long idUsuario);
 }

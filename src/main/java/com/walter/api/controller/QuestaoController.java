@@ -121,12 +121,36 @@ public class QuestaoController {
 		return ResponseEntity.ok(response);
 	}
 	
+	@GetMapping(value = "/topico/assuntoAndUsuario/{idAssunto}/{idUsuario}")
+	public ResponseEntity<Response<List<Questao>>> findByAssuntoId(@PathVariable("idAssunto") Long idAssunto, @PathVariable("idUsuario") Long idUsuario){
+		Response<List<Questao>> response = new Response<List<Questao>>();
+		List<Questao> lista = service.findByTopicoAssuntoIdAndUsuarioId(idAssunto, idUsuario);
+		if(lista == null) {
+			response.getErros().add("Lista de Questões não encontrada pelo id do assunto: " + idAssunto);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
+	
 	@GetMapping(value = "/topico/assunto/disciplina/{id}")
 	public ResponseEntity<Response<List<Questao>>> findByAssuntoDisciplinaId(@PathVariable("id") Long id){
 		Response<List<Questao>> response = new Response<List<Questao>>();
 		List<Questao> lista = service.findByTopicoAssuntoDisciplinaId(id);
 		if(lista == null) {
 			response.getErros().add("Lista de Questões não encontrada pelo id do assunto: " + id);
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(lista);
+		return ResponseEntity.ok(response);
+	}
+	
+	@GetMapping(value = "/topico/assunto/disciplinaAndUsuario/{idDisciplina}/{idUsuario}")
+	public ResponseEntity<Response<List<Questao>>> findByAssuntoDisciplinaId(@PathVariable("idDisciplina") Long idDisciplina, @PathVariable("idUsuario") Long idUsuario){
+		Response<List<Questao>> response = new Response<List<Questao>>();
+		List<Questao> lista = service.findByTopicoAssuntoDisciplinaIdAndUsuarioId(idDisciplina, idUsuario);
+		if(lista == null) {
+			response.getErros().add("Lista de Questões não encontrada pelo id da disciplina: " + idDisciplina);
 			return ResponseEntity.badRequest().body(response);
 		}
 		response.setData(lista);
